@@ -1,0 +1,8 @@
+#server settings
+port: "8030"
+#possible proto values: http, https, fcgi
+proto: http
+
+#default dirs
+staticDir: "./static/"
+templateDir: "./template/"
