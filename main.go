@@ -4,12 +4,12 @@ import (
 	"github.com/gorilla/mux"
 	"net/http"
     "github.com/spf13/viper"
+    _ "github.com/mattn/go-sqlite3"
+    "github.com/astaxie/beego/orm"
 )
 
-//Thus named because of Go's reserved
-//package init() function. see here:
-// http://golang.org/ref/spec#Program_initialization_and_execution
-func initialize() {
+func init() {
+    //Config
     //Set Default values
     viper.SetDefault("port", "8080")
     viper.SetDefault("proto", "http")
@@ -24,12 +24,12 @@ func initialize() {
     //Allow flag or environment overrides
     viper.SetEnvPrefix("BLGR")
     viper.AutomaticEnv()
+
+    //Database
+    orm.RegisterDataBase("default", "sqlite3", "./blgr.db") 
 }
 
 func main() {
-    //Setup config values
-    initialize()
-    
     //Create the router
 	rtr := mux.NewRouter()
 
