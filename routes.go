@@ -10,7 +10,7 @@ import (
 func connectRoutes(router *mux.Router) {
     //Create subrouters for these paths
     feedR := router.PathPrefix("/feed/").Subrouter()
-    postR := router.PathPrefix("/posts/").Subrouter()
+    postR := router.PathPrefix("/posts").Subrouter()
 
     //Front page
     router.Handle("/", http.HandlerFunc(FrontView))
@@ -28,6 +28,6 @@ func feedRoutes(r *mux.Router) {
 }
 
 func postRoutes(r *mux.Router) {
-    
+    r.HandleFunc("/add/", AddPostView)    
 }
 
