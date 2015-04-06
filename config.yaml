@@ -5,4 +5,4 @@ proto: http
 
 #default dirs
 staticDir: "./static/"
-templateDir: "./template/"
+templateDir: "./templates/"
